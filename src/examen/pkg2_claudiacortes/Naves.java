@@ -56,8 +56,8 @@ public class Naves {
         this.Velocidad = Velocidad;
     }
     
-    public int[] CalcularTiempo(){
-        int [] Tiempos=new int[2];
+    public double[] CalcularTiempo(){
+        double [] Tiempos=new double[2];
         
         return Tiempos;
     }

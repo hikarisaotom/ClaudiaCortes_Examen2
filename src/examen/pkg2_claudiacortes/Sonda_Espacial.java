@@ -44,9 +44,13 @@ public class Sonda_Espacial extends Naves{
         return "Sonda_Espacial{" + "Material=" + Material + ", Peso=" + Peso + '}';
     }
     @Override
-      public int[] CalcularTiempo(){
-        int [] Tiempos=new int[2];
-        
+      public double[] CalcularTiempo(){
+        double [] Tiempos=new double[2];
+          
+        double Tiempo_Ida = this.getDestino().getDistancia_Tierra() / this.getVelocidad();
+        double Tiempo_Regreso = 9.8 * this.getVelocidad();
+        Tiempos[0] = Tiempo_Ida;
+        Tiempos[1] = Tiempo_Regreso;
         return Tiempos;
     }
 }

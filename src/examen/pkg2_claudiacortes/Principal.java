@@ -67,6 +67,10 @@ public class Principal extends javax.swing.JFrame {
         jc_naveshilo = new javax.swing.JComboBox<>();
         jc_planetasdestino = new javax.swing.JComboBox<>();
         btn_guardar = new javax.swing.JButton();
+        pb_ida = new javax.swing.JProgressBar();
+        pb_regreso = new javax.swing.JProgressBar();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jd_Listar = new javax.swing.JDialog();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -307,28 +311,44 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel21.setText("Planeta");
 
-        btn_guardar.setText("Guardar");
+        btn_guardar.setText("Empezar");
         btn_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_guardarMouseClicked(evt);
             }
         });
 
+        jLabel22.setText("Tiempo Ida");
+
+        jLabel23.setText("Tiempo Regreso");
+
         javax.swing.GroupLayout jd_CrearExpedicionLayout = new javax.swing.GroupLayout(jd_CrearExpedicion.getContentPane());
         jd_CrearExpedicion.getContentPane().setLayout(jd_CrearExpedicionLayout);
         jd_CrearExpedicionLayout.setHorizontalGroup(
             jd_CrearExpedicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_CrearExpedicionLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jd_CrearExpedicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21)
                 .addGroup(jd_CrearExpedicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_guardar)
-                    .addGroup(jd_CrearExpedicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jc_naveshilo, 0, 188, Short.MAX_VALUE)
-                        .addComponent(jc_planetasdestino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jd_CrearExpedicionLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jd_CrearExpedicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_CrearExpedicionLayout.createSequentialGroup()
+                                .addGroup(jd_CrearExpedicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(21, 21, 21)
+                                .addGroup(jd_CrearExpedicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_guardar)
+                                    .addGroup(jd_CrearExpedicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jc_naveshilo, 0, 188, Short.MAX_VALUE)
+                                        .addComponent(jc_planetasdestino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(pb_regreso, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                            .addComponent(pb_ida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jd_CrearExpedicionLayout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jLabel22))
+                    .addGroup(jd_CrearExpedicionLayout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel23)))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
         jd_CrearExpedicionLayout.setVerticalGroup(
@@ -344,6 +364,14 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jc_planetasdestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(72, 72, 72)
                 .addComponent(btn_guardar)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel22)
+                .addGap(18, 18, 18)
+                .addComponent(pb_ida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pb_regreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(111, Short.MAX_VALUE))
         );
 
@@ -485,9 +513,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        js_serie.setModel(new javax.swing.SpinnerNumberModel(0, null, 0, 1));
+        js_serie.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
-        js_velocidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, 0, 1));
+        js_velocidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jc_tiponave.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-----Seleccione------", "Tripulada", "Sonda espacial" }));
 
@@ -497,9 +525,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        js_peso.setModel(new javax.swing.SpinnerNumberModel(0, 0, 0, 1));
-
-        cb_DestinoNave.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        js_peso.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         javax.swing.GroupLayout jd_navesLayout = new javax.swing.GroupLayout(jd_naves.getContentPane());
         jd_naves.getContentPane().setLayout(jd_navesLayout);
@@ -776,14 +802,40 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_crearplanetaMouseClicked
 
     private void btn_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseClicked
+//        try {
+           
+//            JOptionPane.showMessageDialog(jd_CrearExpedicion, "Expedicion creada");
+//            /*RECORDAR PONER EL HILO*/
+////            Hilo_Expedicion Hilo=new  Hilo_Expedicion(pb_ida,pb_regreso);
+//        } catch (Exception e) {
+//
+//        }
         try {
+            // expedicion.setAvanzar(false);
+
             Naves Nave = ((Naves) jc_naveshilo.getSelectedItem());
             Planetas Destino = ((Planetas) jc_planetasdestino.getSelectedItem());
-            Hilo_Expedicion Expedicion = new Hilo_Expedicion(Nave, Destino);
-            JOptionPane.showMessageDialog(jd_CrearExpedicion, "Expedicion creada");
-            /*RECORDAR PONER EL HILO*/
+            Hilo_Expedicion Expedicion = new Hilo_Expedicion(Nave, Destino, pb_ida, pb_regreso);
+            double ida = 0;
+            double regreso = 0;
+            double[] Tiempo = Nave.CalcularTiempo();
+            ida = Tiempo[0]*1000;
+            regreso = Tiempo[1]*1000;
+//            if (Nave instanceof SondaEspacial) {
+//                ida = (( (SondaEspacial)nave).polimorfo()[0] * 1000);
+//                regreso = (( (SondaEspacial)nave).polimorfo()[1] * 1000);
+//            }else if(nave instanceof Tripulada){
+//                ida = (( (Tripulada)nave).polimorfo()[0] * 1000);
+//                regreso = (( (Tripulada)nave).polimorfo()[1] * 1000);
+//            }
+            pb_ida.setValue(0);
+            pb_regreso.setValue(0);
+            pb_ida.setMaximum((int)ida);
+            pb_regreso.setMaximum((int)regreso);
+            System.out.println("TIEMPO DE IDA " + ida);
+            System.out.println("TIMEPO DE REGRESO" + regreso);
+            Expedicion.start();
         } catch (Exception e) {
-
         }
 
     }//GEN-LAST:event_btn_guardarMouseClicked
@@ -920,6 +972,7 @@ public class Principal extends javax.swing.JFrame {
         }
         jc_planetasdestino.setModel(modeloplane);
         jt_planetas.setModel(Modelo);
+        cb_DestinoNave.setModel(modeloplane);/*AGREGUE ESTO Y SI FALLA FUE CULPA DE ESTO*/
         JOptionPane.showMessageDialog(jd_Listar, "Se ha Modificado el planeta");
     }
     private void btn_ModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ModificarMouseClicked
@@ -962,21 +1015,21 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_materialMouseClicked
 
     private void btn_AgregarastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AgregarastroMouseClicked
-       Astrounatas Tripulante=(Astrounatas) jc_astro.getSelectedItem();
+        Astrounatas Tripulante = (Astrounatas) jc_astro.getSelectedItem();
         if (Tripulantes.contains(Tripulante)) {
-            JOptionPane.showMessageDialog(null,"El astronauta ya se encuentra en la expedicion");
-        }else{
-             Tripulantes.add(Tripulante);
+            JOptionPane.showMessageDialog(null, "El astronauta ya se encuentra en la expedicion");
+        } else {
+            Tripulantes.add(Tripulante);
         }
     }//GEN-LAST:event_btn_AgregarastroMouseClicked
 
     private void btn_crearnaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearnaveMouseClicked
-       int Serie=(int) js_serie.getValue();
-        Planetas Destino= (Planetas)cb_DestinoNave.getSelectedItem();
-        int Velocidad=(int)js_velocidad.getValue();
-        int Tipo=jc_tiponave.getSelectedIndex();
-        String Material=txt_material.getText();
-        int Peso=(int)js_peso.getValue();
+        int Serie = (int) js_serie.getValue();
+        Planetas Destino = (Planetas) cb_DestinoNave.getSelectedItem();
+        int Velocidad = (int) js_velocidad.getValue();
+        int Tipo = jc_tiponave.getSelectedIndex();
+        String Material = txt_material.getText();
+        int Peso = (int) js_peso.getValue();
         /*-----Seleccione------
 Tripulada
 Sonda espacial*/
@@ -987,13 +1040,21 @@ Sonda espacial*/
             NT.setVelocidad(Velocidad);
             NT.setLugar_Despegue(txt_despegue.getText());
             NT.setTripulantes(Tripulantes);
+            DefaultComboBoxModel Modelo=(DefaultComboBoxModel)jc_naveshilo.getModel();
+            Modelo.addElement(NT);
+            jc_naveshilo.setModel(Modelo);
+            JOptionPane.showMessageDialog(null, "Se creo nave Tripulada");
         } else if (Tipo == 2) {//Sonda
             Sonda_Espacial SE = new Sonda_Espacial();
             SE.setDestino(Destino);
             SE.setMaterial(Material);
             SE.setNum_Serie(Serie);
             SE.setVelocidad(Velocidad);
-            
+              DefaultComboBoxModel Modelo=(DefaultComboBoxModel)jc_naveshilo.getModel();
+            Modelo.addElement(SE);
+            jc_naveshilo.setModel(Modelo);
+            JOptionPane.showMessageDialog(null, "Se creo Sonda Espacial");
+
         }
     }//GEN-LAST:event_btn_crearnaveMouseClicked
 
@@ -1056,6 +1117,8 @@ Sonda espacial*/
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1099,6 +1162,8 @@ Sonda espacial*/
     private javax.swing.JSpinner js_velocidad;
     private javax.swing.JTable jt_astro;
     private javax.swing.JTable jt_planetas;
+    private javax.swing.JProgressBar pb_ida;
+    private javax.swing.JProgressBar pb_regreso;
     private javax.swing.JPopupMenu pp_astro;
     private javax.swing.JPopupMenu pp_planeta;
     private javax.swing.JTextField txt_despegue;
