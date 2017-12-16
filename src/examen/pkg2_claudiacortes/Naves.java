@@ -1,5 +1,7 @@
 package examen.pkg2_claudiacortes;
 
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,7 +12,7 @@ package examen.pkg2_claudiacortes;
  *
  * @author Claudia Cortes
  */
-public class Naves {
+public class Naves implements Serializable{
     
   int Num_Serie;
         Planetas Destino;

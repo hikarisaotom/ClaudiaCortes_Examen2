@@ -5,8 +5,11 @@
  */
 package examen.pkg2_claudiacortes;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -112,6 +115,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
 
         jLabel1.setText("Nombre");
 
@@ -688,6 +693,22 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem5);
 
+        jMenuItem6.setText("Guardar");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
+
+        jMenuItem7.setText("Abrir");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -1043,6 +1064,7 @@ Sonda espacial*/
             DefaultComboBoxModel Modelo=(DefaultComboBoxModel)jc_naveshilo.getModel();
             Modelo.addElement(NT);
             jc_naveshilo.setModel(Modelo);
+            Naves.add(NT);
             JOptionPane.showMessageDialog(null, "Se creo nave Tripulada");
         } else if (Tipo == 2) {//Sonda
             Sonda_Espacial SE = new Sonda_Espacial();
@@ -1053,10 +1075,46 @@ Sonda espacial*/
               DefaultComboBoxModel Modelo=(DefaultComboBoxModel)jc_naveshilo.getModel();
             Modelo.addElement(SE);
             jc_naveshilo.setModel(Modelo);
+            Naves.add(SE);
             JOptionPane.showMessageDialog(null, "Se creo Sonda Espacial");
 
         }
     }//GEN-LAST:event_btn_crearnaveMouseClicked
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        AdministradorArchivos  AR= new AdministradorArchivos (".\\Todo.clau");
+          ArrayList<Object> TODO = new ArrayList();
+           // ArrayList<Astrounatas> Astros = new ArrayList();
+    //ArrayList<Planetas> Planetas = new ArrayList();
+   // ArrayList<Astrounatas> Tripulantes = new ArrayList();
+     //   ArrayList<Naves> Naves = new ArrayList();
+        for (Naves Nave : Naves) {
+              TODO.add(Nave);
+        }
+        for (Astrounatas Nave : Astros) {
+              TODO.add(Nave);
+        }
+        for (Planetas Nave : Planetas) {
+              TODO.add(Nave);
+        }
+        AR.setTodo(TODO);
+        try {
+            AR.EscribirArchivo();
+        } catch (IOException ex) {
+           // Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        AdministradorArchivos AR = new AdministradorArchivos(".\\Todo.clau");
+        AR.CargarArchivo();
+        Astros = AR.getA();
+        Planetas = AR.getP();
+        Naves = AR.getN();
+        Actualizar();
+        Actualizar_Plane();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1134,6 +1192,8 @@ Sonda espacial*/
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1179,4 +1239,5 @@ Astrounatas Actual_astro;
     ArrayList<Astrounatas> Astros = new ArrayList();
     ArrayList<Planetas> Planetas = new ArrayList();
     ArrayList<Astrounatas> Tripulantes = new ArrayList();
+        ArrayList<Naves> Naves = new ArrayList();
 }
